@@ -8,19 +8,21 @@
 class Solution {
 public:
     vector<vector<int>> generate(int numRows) {
-        vector<vector<int>>ans(numRows);
-        vector<int>buf(1, 1);
+        vector<vector<int>>ans;
+        vector<int>buf;
+        buf.push_back(1);
         ans.push_back(buf);
+        // return ans;
         for(int i=1; i<numRows; i++) {
-            vector<int>buf;
-            for(int j=0; j<i+1; j++) {
+            vector<int>buf1;
+            for(int j=0; j<i; j++) {
                 if(j-1 < 0) {
-                    buf.push_back(ans[i-1][j]);
+                    buf1.push_back(ans[i-1][j]);
                 } else {
-                    buf.push_back(ans[i-1][j] + ans[i-1][j-1]);
+                    buf1.push_back(ans[i-1][j] + ans[i-1][j-1]);
                 }
             }
-            ans.push_back(buf);
+            ans.push_back(buf1);
         }
         return ans;
     }
